@@ -1,27 +1,56 @@
-function addGoal() {
-    let goalText = document.getElementById("goalInput").value;
-    let priority = document.getElementById("priority").value;
-    let goalList = document.getElementById("goalList");
-
-    if (goalText === "") {
-        alert("Please enter a goal");
-        return;
-    }
-
-    let li = document.createElement("li");
-    li.innerHTML = `
-        <span>${goalText} (${priority})</span>
-        <span class="delete" onclick="deleteGoal(this)">❌</span>
-    `;
-
-    if (priority === "High") li.classList.add("high");
-    if (priority === "Medium") li.classList.add("medium");
-    if (priority === "Low") li.classList.add("low");
-
-    goalList.appendChild(li);
-    document.getElementById("goalInput").value = "";
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-function deleteGoal(element) {
-    element.parentElement.remove();
+.container {
+    background: white;
+    width: 350px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+
+button {
+    background: #6c63ff;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #eef;
+    padding: 10px;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.high { border-left: 5px solid red; }
+.medium { border-left: 5px solid orange; }
+.low { border-left: 5px solid green; }
+
+.delete {
+    cursor: pointer;
+    color: red;
 }
